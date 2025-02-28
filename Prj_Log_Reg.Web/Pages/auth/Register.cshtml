@@ -1,5 +1,5 @@
 ﻿@page
-@model Prj_Blog.Web.Pages.Auth.RegisterModel
+@model Prj_Log_Reg.Web.Pages.auth.RegisterModel
 @{
     Layout = "Shared/_AuthLayout";
     ViewData["Title"] = "ثبت نام در سایت";
@@ -8,10 +8,10 @@
     <h1>@ViewData["Title"]</h1>
     <div>
         <input type="text" asp-for="UserName" placeholder="نام کاربری" required="" id="username" />
-        <span  asp-validation-for="UserName"   style="color:red;"  ></span>
+        <span asp-validation-for="UserName" style="color:red;"></span>
     </div>
     <div>
-        <input type="text" asp-for="FullName" placeholder="نام و نام خانوادگی"  />
+        <input type="text" asp-for="FullName" placeholder="نام و نام خانوادگی" />
         <span asp-validation-for="FullName" style="color:red;"></span>
     </div>
     <div>

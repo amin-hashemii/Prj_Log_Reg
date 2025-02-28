@@ -13,7 +13,7 @@ namespace DataLayer.Entity
         public int Id { get; set; }
         [Required]
         public string UserName { get; set; }
-        public string FullNamw { get; set; }
+        public string FullName { get; set; }
         [Required]
         public string Password { get; set; }
         public UserRole Role { get; set; }

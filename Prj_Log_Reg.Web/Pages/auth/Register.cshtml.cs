@@ -1,73 +1,63 @@
-﻿
-using Prj_Blog.CoreLayer.Utilities;
+using CoreLayer.DTO;
+using CoreLayer.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Prj_Blog.CoreLayer.DTOs.Users;
-using Prj_Blog.CoreLayer.Services.Users;
-
-//using Prj_Blog.CoreLayer.DTOs;
-//using Prj_Blog.CoreLayer.Services.Users;
-//using Prj_Blog.CoreLayer.Utities;
+using Prj_Log_Reg.CoreLayer.Utility;
 using System.ComponentModel.DataAnnotations;
 
-namespace Prj_Blog.Web.Pages.Auth
+namespace Prj_Log_Reg.Web.Pages.auth
 {
     [BindProperties]
     public class RegisterModel : PageModel
     {
-        private readonly IUserService _userService;
-
-
+        private readonly IUserService _userservice;
+     
+      
         #region propertis
 
-        [Display(Name = "نام کاربری")]
-        [Required(ErrorMessage = "{0} را وارد کنید")]
+        [Display(Name = "??? ??????")]
+        [Required(ErrorMessage = "{0} ?? ???? ????")]
         public string UserName { get; set; }
 
-        [Display(Name = "نام و نام خانوادگی")]
-        [Required(ErrorMessage = "{0} را وارد کنید")]
+        [Display(Name = "??? ? ??? ????????")]
+        [Required(ErrorMessage = "{0} ?? ???? ????")]
         public string FullName { get; set; }
 
-        [Display(Name = "کلمه عبور")]
-        [Required(ErrorMessage = "{0}را وارد کنید")]
-        [MinLength(6, ErrorMessage = "{0}  باید بیشتز از5 کارکتر باشد")]
+        [Display(Name = "???? ????")]
+        [Required(ErrorMessage = "{0}?? ???? ????")]
+        [MinLength(6, ErrorMessage = "{0}  ???? ????? ??5 ?????? ????")]
         public string Password { get; set; }
 
 
         #endregion
-
-        public RegisterModel(IUserService userService)
+        public RegisterModel(IUserService userservice)
         {
-            _userService = userService;
+            _userservice = userservice;
         }
+
 
         public void OnGet()
         {
-
         }
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid == false)
+            if(ModelState.IsValid == false)
             {
                 return Page();
             }
-            var result = _userService.RegisterUser(new UserRegisterDto()
+            var resault = _userservice.RegisterUser(new UserRegisterDto()
             {
                 UserName = UserName,
-                Password = Password,
+                PassWord = Password,
                 FullName = FullName
+
             });
-            if (result.Status == OperationResultStatus.Error)
+            if (resault.Status == OperationResultStatus.Error)
             {
-                ModelState.AddModelError("UserName", result.Message);
+                ModelState.AddModelError("UserName", resault.Message);
                 return Page();
             }
-          return RedirectToPage("Login");
+            return RedirectToPage("Login");
         }
-
-
-
-
     }
-    }
-
+}

@@ -5,13 +5,13 @@
     ViewData["Title"] = "ورود در سایت";
 }
 <form method="post">
-    <h1>@ViewData["Title"]</h1>
+   <h1>@ViewData["Title"]</h1>
     <div>
-        <input asp-for="UserName" type="text" placeholder="نام کاربری" required="" />
+        <input asp-for="UserName"  type="text" placeholder="نام کاربری" required=""  />
         <span asp-validation-for="UserName" style="color:red"></span>
     </div>
     <div>
-        <input asp-for="Password" type="password" placeholder="کلمه عبور" required="" />
+        <input asp-for="Password" type="password" placeholder="کلمه عبور" required=""  />
         <span asp-validation-for="Password" style="color:red"></span>
     </div>
     <div>
